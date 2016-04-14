@@ -1,26 +1,38 @@
-
+<h1>Add new students</h1>
+<form class="form-horizontal">
+  Name:  <input ng-model="$ctrl.newStudent.name" type="text" name="text" placeholder="Type to add new students"/>
+  Born:  <input ng-model="$ctrl.newStudent.born" type="text" name="text" placeholder="Type to add new born"/>
+    <button ng-click="$ctrl.addStudent($ctrl.newStudent)">Insert</button>
+</form>
 <header>
   <h1> List Students</h1>
 </header>
-<h1>Add new students</h1>
-<form class="new-task">
-    <input ng-model="$ctrl.newStudent.name" type="text" name="text" placeholder="Type to add new students"/>
-    <input ng-model="$ctrl.newStudent.born" type="text" name="text" placeholder="Type to add new born"/>
-    <button ng-click="$ctrl.addStudent($ctrl.newStudent)">Insert</button>
-  </form>
 <h2>Update an delete student</h2>
-<ul>
-  <li ng-repeat="student in $ctrl.students">
-    <div class="col-md-4">
-        {{student.name}} - {{student.born}}
-        <button ng-click="$ctrl.deleteStudent(student)">Delete</button>
-    </div>
-    <div class="col-md-6">
-      <input type="checkbox" ng-model="mycheck">update
-      <div ng-show="mycheck">
-        <input ng-model="$ctrl.born" type="text" name="text" placeholder="Type to add new born"/>
-        <button ng-click="$ctrl.updateStudent(student,$ctrl.born)">update</button>
-      </div>
-    </div>
-  </li>
-</ul>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Born</th>
+        <th>Action Delete</th>
+        <th>Action Update Born</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat="student in $ctrl.students">
+      <tr>
+          <td>
+              {{student.name}}
+          </td>
+          <td>
+              {{student.born}}
+          </td>
+          <td>
+              <button ng-click="$ctrl.deleteStudent(student)">Delete</button>
+          </td>
+          <td>
+              <input ng-model="$ctrl.born" type="text" name="text" placeholder="Type to add new born"/>
+              <button ng-click="$ctrl.updateStudent(student,$ctrl.born)">update</button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
